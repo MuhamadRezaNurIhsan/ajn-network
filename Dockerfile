@@ -10,9 +10,10 @@ COPY . .
 
 RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
-RUN php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
+RUN php artisan route:clear \
+    && php artisan config:clear \
+    && php artisan view:clear \
+    && php artisan cache:clear
 
 EXPOSE 8080
 
